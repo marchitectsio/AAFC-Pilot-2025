@@ -1,8 +1,5 @@
-import { useAuth } from "@/_core/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
-import { Maximize2, X } from "lucide-react";
-// Logo path - using direct file reference instead of environment variable
 
 const animationStyles = `
   @keyframes fadeIn {
@@ -75,26 +72,11 @@ const animationStyles = `
   .donate-button:hover {
     animation: sparkle 0.6s ease-in-out;
   }
-
-  .logo-subtext {
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    color: #E3A857;
-    text-transform: uppercase;
-    margin-top: 0.25rem;
-    line-height: 1;
-  }
 `;
 
 export default function Home() {
-  // The userAuth hooks provides authentication state
-  // To implement login/logout functionality, simply call logout() or redirect to getLoginUrl()
-  let { user, loading, error, isAuthenticated, logout } = useAuth();
-
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeNav, setActiveNav] = useState("home");
-  const [isVideoExpanded, setIsVideoExpanded] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -130,8 +112,10 @@ export default function Home() {
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 transition-all duration-300 bg-gradient-to-r from-gray-900 via-gray-800 to-black shadow-2xl">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-          {/* Logo - AAFC Image */}
-          <img src="https://files.manuscdn.com/user_upload_by_module/session_file/92357281/WgmTjaohEqxJTUDB.png" alt="AAFC Logo" className="h-16 w-auto mix-blend-lighten" />
+          {/* Logo - AAFC Text */}
+          <h1 className="text-3xl font-black bg-gradient-to-r from-[#d4af37] via-[#f4d03f] to-[#d4af37] bg-clip-text text-transparent tracking-tight">
+            AAFC
+          </h1>
 
           {/* Navigation Links - Centered */}
           <ul className="hidden md:flex gap-8 items-center absolute left-1/2 transform -translate-x-1/2">
@@ -147,8 +131,8 @@ export default function Home() {
                   onClick={() => scrollToSection(item.id)}
                   className={`text-sm font-semibold transition-all duration-300 pb-2 border-b-2 ${
                     activeNav === item.id
-                      ? "text-[#E3A857] border-[#E3A857]"
-                      : "text-white border-transparent hover:text-[#E3A857]"
+                      ? "text-[#d4af37] border-[#d4af37]"
+                      : "text-white border-transparent hover:text-[#d4af37]"
                   }`}
                 >
                   {item.label}
@@ -157,12 +141,12 @@ export default function Home() {
             ))}
           </ul>
 
-          {/* PARTNER WITH US Button - Far Right */}
+          {/* Partner with Us Button - Far Right */}
           <Button
-            className="px-4 py-2 bg-[#E3A857] hover:bg-transparent hover:border-2 hover:border-[#E3A857] text-black hover:text-[#E3A857] font-bold text-sm rounded-lg transition-all duration-300 shadow-lg"
+            className="donate-button text-3xl font-black px-6 py-2 bg-gradient-to-r from-[#d4af37] via-[#f4d03f] to-[#d4af37] hover:from-[#f4d03f] hover:via-[#d4af37] hover:to-[#f4d03f] text-black rounded-lg transition-all duration-300 shadow-lg hover:shadow-[0_0_30px_rgba(212,175,55,0.6)]"
             onClick={() => window.open('https://app.youform.com/forms/r9uihypu', '_blank')}
           >
-            PARTNER WITH US
+            Partner with Us
           </Button>
         </div>
       </nav>
@@ -173,33 +157,34 @@ export default function Home() {
         className="relative min-h-screen pt-32 flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#1a1a2e] via-[#16213e] to-[#0f3460]"
       >
         {/* Background decorative elements */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-[#E3A857]/5 rounded-full blur-3xl" />
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[#d4af37]/5 rounded-full blur-3xl" />
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#3b82f6]/5 rounded-full blur-3xl" />
 
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          {/* Main Tagline */}
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black mb-4 leading-tight text-white animate-fade-in-delayed block">
-            ARTISTS AND ATHLETES FOR CHANGE
+
+
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black mb-6 leading-tight text-white animate-fade-in-delayed">
+            Empowering the Next Generation of Leaders
           </h1>
 
-          <p className="text-2xl sm:text-3xl lg:text-4xl mb-8 font-bold text-[#E3A857] animate-fade-in-delayed-2">
-            Empowering the next generation of leaders
+          <p className="text-xl sm:text-2xl mb-6 font-semibold tracking-wide animate-fade-in-delayed-2 bg-gradient-to-r from-[#d4af37] via-[#3b82f6] to-[#d4af37] bg-clip-text text-transparent">
+            Through Arts, Athletics, and Innovation
           </p>
 
-          <p className="text-lg text-gray-300 max-w-2xl mx-auto mb-12 leading-relaxed animate-fade-in-delayed-4">
+          <p className="text-lg text-gray-300 max-w-2xl mx-auto mb-12 leading-relaxed animate-fade-in-delayed-3">
             AAFC trains youth to become digitally fluent leaders who build sustainable careers and strengthen their communities through creativity, discipline, and innovation.
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-delayed-5">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-delayed-4">
             <Button
-              className="px-8 py-3 bg-[#E3A857] hover:bg-transparent hover:border-2 hover:border-[#E3A857] text-black hover:text-[#E3A857] font-bold text-lg rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl"
+              className="px-8 py-3 bg-[#d4af37] hover:bg-[#c9a227] text-black font-bold text-lg rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl"
               onClick={() => window.open('https://app.youform.com/forms/f8xnzrci', '_blank')}
             >
               Apply Now
             </Button>
             <Button
-              className="px-8 py-3 border-2 border-[#E3A857] bg-transparent hover:bg-[#E3A857] text-[#E3A857] hover:text-black font-bold text-lg rounded-lg transition-all duration-300 hover:border-[#E3A857]"
+              className="px-8 py-3 border-2 border-[#d4af37] bg-transparent hover:bg-[#d4af37] text-[#d4af37] hover:text-black font-bold text-lg rounded-lg transition-all duration-300"
               onClick={() => window.open('https://app.youform.com/forms/r9uihypu', '_blank')}
             >
               Partner with Us
@@ -221,36 +206,20 @@ export default function Home() {
               </p>
               <div className="grid grid-cols-3 gap-4">
                 <div className="text-center">
-                  <div className="text-3xl font-black text-[#E3A857] mb-2">500+</div>
+                  <div className="text-3xl font-black text-[#d4af37] mb-2">500+</div>
                   <p className="text-sm text-gray-600 font-semibold">Youth Impacted</p>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-black text-[#E3A857] mb-2">50+</div>
+                  <div className="text-3xl font-black text-[#d4af37] mb-2">50+</div>
                   <p className="text-sm text-gray-600 font-semibold">Programs</p>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-black text-[#E3A857] mb-2">25+</div>
+                  <div className="text-3xl font-black text-[#d4af37] mb-2">25+</div>
                   <p className="text-sm text-gray-600 font-semibold">Partners</p>
                 </div>
               </div>
             </div>
-            <div className="relative h-full min-h-96 rounded-2xl overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center shadow-2xl group">
-              <video
-                autoPlay
-                muted
-                loop
-                className="w-full h-full object-cover"
-              >
-                <source src="https://files.manuscdn.com/user_upload_by_module/session_file/92357281/ariQPoonbjaKemrJ.mp4" type="video/mp4" />
-              </video>
-              <button
-                onClick={() => setIsVideoExpanded(true)}
-                className="absolute top-4 right-4 bg-white hover:bg-gray-100 text-gray-900 p-2 rounded-lg shadow-lg transition-all duration-300 opacity-0 group-hover:opacity-100"
-                aria-label="Expand video"
-              >
-                <Maximize2 size={24} />
-              </button>
-            </div>
+            <div className="relative h-full min-h-96 rounded-2xl overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center shadow-2xl"></div>
           </div>
         </div>
       </section>
@@ -285,7 +254,7 @@ export default function Home() {
             ].map((program, idx) => (
               <div
                 key={idx}
-                className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-t-4 border-[#E3A857]"
+                className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-t-4 border-[#d4af37]"
               >
                 <div className="text-5xl mb-4">{program.icon}</div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">
@@ -332,7 +301,7 @@ export default function Home() {
             ].map((impact, idx) => (
               <div
                 key={idx}
-                className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-8 border-l-4 border-[#E3A857] shadow-md hover:shadow-lg transition-all duration-300"
+                className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-8 border-l-4 border-[#d4af37] shadow-md hover:shadow-lg transition-all duration-300"
               >
                 <h3 className="text-2xl font-bold text-gray-900 mb-3">
                   {impact.title}
@@ -362,13 +331,13 @@ export default function Home() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
-              className="px-8 py-3 bg-[#E3A857] hover:bg-transparent hover:border-2 hover:border-[#E3A857] text-black hover:text-[#E3A857] font-bold text-lg rounded-lg transition-all duration-300 shadow-lg"
+              className="px-8 py-3 bg-[#d4af37] hover:bg-[#c9a227] text-black font-bold text-lg rounded-lg transition-all duration-300 shadow-lg"
               onClick={() => window.open('https://app.youform.com/forms/f8xnzrci', '_blank')}
             >
               Apply Now
             </Button>
             <Button 
-              className="px-8 py-3 border-2 border-[#E3A857] bg-transparent hover:bg-[#E3A857] text-[#E3A857] hover:text-black font-bold text-lg rounded-lg transition-all duration-300"
+              className="px-8 py-3 border-2 border-[#d4af37] bg-transparent hover:bg-[#d4af37] text-[#d4af37] hover:text-black font-bold text-lg rounded-lg transition-all duration-300"
               onClick={() => window.open('https://app.youform.com/forms/r9uihypu', '_blank')}
             >
               Partner with Us
@@ -410,30 +379,6 @@ export default function Home() {
           </div>
         </div>
       </footer>
-
-      {/* Video Modal */}
-      {isVideoExpanded && (
-        <div className="fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center p-4">
-          <div className="relative w-full max-w-4xl aspect-video bg-black rounded-lg overflow-hidden">
-            <video
-              autoPlay
-              muted
-              loop
-              controls
-              className="w-full h-full object-cover"
-            >
-              <source src="https://files.manuscdn.com/user_upload_by_module/session_file/92357281/ariQPoonbjaKemrJ.mp4" type="video/mp4" />
-            </video>
-            <button
-              onClick={() => setIsVideoExpanded(false)}
-              className="absolute top-4 right-4 bg-white hover:bg-gray-100 text-gray-900 p-2 rounded-lg shadow-lg transition-all duration-300"
-              aria-label="Close video"
-            >
-              <X size={24} />
-            </button>
-          </div>
-        </div>
-      )}
 
       <style>{animationStyles}</style>
     </div>
