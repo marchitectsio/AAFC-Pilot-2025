@@ -112,10 +112,12 @@ export default function Home() {
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 transition-all duration-300 bg-gradient-to-r from-gray-900 via-gray-800 to-black shadow-2xl">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-          {/* Logo - AAFC Text */}
-          <h1 className="text-3xl font-black bg-gradient-to-r from-[#d4af37] via-[#f4d03f] to-[#d4af37] bg-clip-text text-transparent tracking-tight">
-            AAFC
-          </h1>
+          {/* Logo - AAFC Image */}
+          <img 
+            src="/aafc-logo.png" 
+            alt="AAFC Logo" 
+            className="h-14 w-auto"
+          />
 
           {/* Navigation Links - Centered */}
           <ul className="hidden md:flex gap-8 items-center absolute left-1/2 transform -translate-x-1/2">
